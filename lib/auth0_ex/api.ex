@@ -9,7 +9,7 @@ defmodule Auth0Ex.Api do
       import Auth0Ex.Utils
 
       def build_url(path, params) do
-        "#{base_url}#{path}?#{URI.encode_query(query_params)}"
+        "#{base_url}#{path}?#{URI.encode_query(params)}"
       end
 
       def get(path, params) do
