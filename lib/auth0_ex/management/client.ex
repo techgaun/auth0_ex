@@ -6,7 +6,10 @@ defmodule Auth0Ex.Management.Client do
   use Auth0Ex.Api
   @path "clients"
 
-  def get do
-    get(@path, %{})
+  @doc """
+  Gets all the clients
+  """
+  def get(params \\ %{}) when is_map(params) or is_list(params) do
+    do_get(@path, params)
   end
 end

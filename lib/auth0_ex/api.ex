@@ -12,11 +12,15 @@ defmodule Auth0Ex.Api do
         "#{base_url}#{path}?#{URI.encode_query(params)}"
       end
 
-      def get(path, params) do
+      def do_get(path, params) when is_map(params) do
         path
         |> build_url(params)
         |> HTTPoison.get(req_header)
         |> Parser.parse
+      end
+
+      def do_get(path, params) when is_list(params) do
+        do_get(path, Enum.into(params, %{}))
       end
     end
   end
