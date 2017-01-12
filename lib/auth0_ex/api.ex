@@ -20,15 +20,15 @@ defmodule Auth0Ex.Api do
         do_get(path, Enum.into(params, %{}))
       end
 
-      def do_post(path, body) do
+      def do_post(path, body \\ %{}) do
         do_request(:post, path, %{}, Poison.encode!(body))
       end
 
-      def do_put(path, body) do
+      def do_put(path, body \\ %{}) do
         do_request(:put, path, %{}, Poison.encode!(body))
       end
 
-      def do_patch(path, body) do
+      def do_patch(path, body \\ %{}) do
         do_request(:patch, path, %{}, Poison.encode!(body))
       end
 

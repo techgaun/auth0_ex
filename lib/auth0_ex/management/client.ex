@@ -51,4 +51,11 @@ defmodule Auth0Ex.Management.Client do
   def delete(id) do
     do_delete("#{@path}/#{id}")
   end
+
+  @doc """
+  Rotate a client secret for client with given ID
+  """
+  def rotate_secret(id) do
+    do_post("#{@path}/#{id}/rotate-secret")
+  end
 end
