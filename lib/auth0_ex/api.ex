@@ -21,10 +21,22 @@ defmodule Auth0Ex.Api do
       end
 
       def do_post(path, body) do
-        do_request(:post, path, %{}, body)
+        do_request(:post, path, %{}, Poison.encode!(body))
       end
 
-      defp do_request(method, path, params, req_body) do
+      def do_put(path, body) do
+        do_request(:put, path, %{}, Poison.encode!(body))
+      end
+
+      def do_patch(path, body) do
+        do_request(:patch, path, %{}, Poison.encode!(body))
+      end
+
+      def do_delete(path) do
+        do_request(:delete, path)
+      end
+
+      defp do_request(method, path, params \\ %{}, req_body \\ "") do
         uri = build_url(path, params)
         method
         |> HTTPoison.request(uri, req_body, req_header, http_opts)

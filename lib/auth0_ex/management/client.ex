@@ -26,4 +26,29 @@ defmodule Auth0Ex.Management.Client do
   def get(id, params) when is_binary(id) and (is_map(params) or is_list(params)) do
     do_get("#{@path}/#{id}", params)
   end
+
+  @doc """
+  Creates a new Auth0 client from given body
+
+      iex> Auth0Ex.Management.Client.create(%{name: "Samars App"})
+  """
+  def create(body) do
+    do_post("#{@path}", body)
+  end
+
+  @doc """
+  Updates Auth0 client of given ID with given body
+  """
+  def update(id, body) do
+    do_patch("#{@path}/#{id}", body)
+  end
+
+  @doc """
+  Deletes the client with given client id
+
+      iex> Auth0Ex.Management.Client.delete("some_client_id")
+  """
+  def delete(id) do
+    do_delete("#{@path}/#{id}")
+  end
 end
