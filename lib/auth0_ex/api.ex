@@ -22,6 +22,13 @@ defmodule Auth0Ex.Api do
       def do_get(path, params) when is_list(params) do
         do_get(path, Enum.into(params, %{}))
       end
+
+      def do_post(path, body) do
+        path
+        |> build_url(%{})
+        |> HTTPoison.post(body, req_header)
+        > Parser.parse
+      end
     end
   end
 end
