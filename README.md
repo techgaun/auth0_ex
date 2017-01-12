@@ -1,5 +1,7 @@
 # Auth0Ex
 
+[![Build Status](https://travis-ci.org/techgaun/auth0_ex.svg?branch=master)](https://travis-ci.org/techgaun/auth0_ex)
+
 > An elixir client library for Auth0
 
 This is work in progress that I'm trying to do on my free time.
