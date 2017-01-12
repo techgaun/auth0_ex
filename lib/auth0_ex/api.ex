@@ -13,10 +13,7 @@ defmodule Auth0Ex.Api do
       end
 
       def do_get(path, params) when is_map(params) do
-        path
-        |> build_url(params)
-        |> HTTPoison.get(req_header)
-        |> Parser.parse
+        do_request(:get, path, params, "")
       end
 
       def do_get(path, params) when is_list(params) do
@@ -24,10 +21,14 @@ defmodule Auth0Ex.Api do
       end
 
       def do_post(path, body) do
-        path
-        |> build_url(%{})
-        |> HTTPoison.post(body, req_header)
-        > Parser.parse
+        do_request(:post, path, %{}, body)
+      end
+
+      defp do_request(method, path, params, req_body) do
+        uri = build_url(path, params)
+        method
+        |> HTTPoison.request(uri, req_body, req_header, http_opts)
+        |> Parser.parse
       end
     end
   end
