@@ -1,8 +1,11 @@
 language: elixir
 elixir:
-  - 1.4.0
-  - 1.3.4
+- 1.4.0
+- 1.3.4
 otp_release:
-  - 19.2
-  - 19.1
-  - 18.2.1
+- 19.2
+- 19.1
+- 18.2.1
+env:
+  global:
+    secure: M35mr5n+dxVLgGrSgea2aTHG+dU55eOYMnb4fvpKCTGpyp5q0QInNxdgj7FJgy9G24soX0lA3L1RyHcMLXAB2unPnrPF0J6wOhoLqgg7p0Obo2kH9r5QGC5zyn+qpjzkQs87Iwq8W8zWCSDNcIzH+eI9KNVvGvQVh+UyZ6LhvosSBIyKrXh9r90PQxjAUCHfht6CC5Ol2ND9LZb2cduIOxTfXk5WoGAEddt+GeDnSwrsqxG3v1sq51qpOf/eRy0gT/ZAdxvc1JzuWfSd0urgjkME322sV5QkQEtV73s7ch+qyISXd+NGykqkJbpmRD+HTkalVJXALwvSuzcYwb5r2WxnmA+hB643NBCoXS1Q/n4vFJIoYh9hMKXZ6ItE63AkEIJw6kv8nN/dDdECOKrrjZ9UgTtnfk/ry8K2RCNRVm7xJ0kelX40cNGijkL5vaVTGlQf2YLo/dNYjZaCZCSqFz05+Jrn3L6f8hM8LYvvV1JkGI7pszZCJVnBbv+wZZ9xE5YiQAU25VE5Cwu+Ney0SfZX7JDBVEQfMqTqATTQC8lzAwQhXnu+Qrcn67mI2QoToniLf2fuYFcTnQ9f9UxgdWblpC/k3KFsrk7mejUBYprZ7BWIALW4RG2aRojmOn04eKUtLPDRx8Ep7mDPBFYq+OeiZ5xMgDrp++UIiql+noc=
