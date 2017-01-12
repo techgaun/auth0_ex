@@ -12,7 +12,7 @@ defmodule Auth0Ex.Parser do
   @spec parse(tuple) :: response
   def parse(response) do
     case response do
-      {:ok, %HTTPoison.Response{body: body, headers: headers, status_code: status}} when status in [200, 201] ->
+      {:ok, %HTTPoison.Response{body: body, headers: _, status_code: status}} when status in [200, 201] ->
         {:ok, Poison.decode!(body)}
 
       {:ok, %HTTPoison.Response{body: _, headers: _, status_code: 204}} ->

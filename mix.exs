@@ -7,6 +7,9 @@ defmodule Auth0Ex.Mixfile do
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     preferred_cli_env: [
+       vcr: :test, "vcr.delete": :test, "vcr.check": :test, "vcr.show": :test
+     ],
      deps: deps()]
   end
 
@@ -29,7 +32,8 @@ defmodule Auth0Ex.Mixfile do
   defp deps do
     [
       {:httpoison, "~> 0.9 or ~> 0.10"},
-      {:poison, "~> 2.0 or ~> 3.0"}
+      {:poison, "~> 2.0 or ~> 3.0"},
+      {:exvcr, "~> 0.8", only: :test}
     ]
   end
 end

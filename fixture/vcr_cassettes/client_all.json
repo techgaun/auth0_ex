@@ -1,0 +1,36 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "User-Agent": "Auth0Ex <https://github.com/techgaun/auth0_ex>",
+        "Authorization": "***",
+        "Content-Type": "application/json"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://brighterlink.auth0.com/api/v2/clients?fields=name"
+    },
+    "response": {
+      "body": "[{\"name\":\"Samar Staging\"},{\"name\":\"Samar Dev\"},{\"name\":\"Samar\"},{\"name\":\"Auth0 Management API (Test Client)\"},{\"name\":\"Samar Present\"},{\"name\":\"All Applications\"}]",
+      "headers": {
+        "Date": "Thu, 12 Jan 2017 07:56:34 GMT",
+        "Content-Type": "application/json; charset=utf-8",
+        "Content-Length": "191",
+        "Connection": "keep-alive",
+        "Keep-Alive": "timeout=100",
+        "x-ratelimit-limit": "50",
+        "x-ratelimit-remaining": "49",
+        "x-ratelimit-reset": "1484207795",
+        "vary": "origin",
+        "cache-control": "no-cache",
+        "accept-ranges": "bytes",
+        "Strict-Transport-Security": "max-age=15724800",
+        "X-Robots-Tag": "noindex, nofollow, nosnippet, noarchive"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

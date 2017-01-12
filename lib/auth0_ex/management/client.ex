@@ -38,6 +38,8 @@ defmodule Auth0Ex.Management.Client do
 
   @doc """
   Updates Auth0 client of given ID with given body
+
+      iex> Auth0Ex.Management.Client.update("some_client_id", %{name: "New Client Name"})
   """
   def update(id, body) do
     do_patch("#{@path}/#{id}", body)
@@ -54,6 +56,8 @@ defmodule Auth0Ex.Management.Client do
 
   @doc """
   Rotate a client secret for client with given ID
+
+      iex> Auth0Ex.Management.Client.rotate_secret("some_client_id")
   """
   def rotate_secret(id) do
     do_post("#{@path}/#{id}/rotate-secret")

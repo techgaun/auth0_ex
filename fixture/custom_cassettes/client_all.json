@@ -1,0 +1,69 @@
+[
+  {
+    "name": "My application",
+    "client_id": "AaiyAPdpYdesoKnqjj8HJqRn4T5titww",
+    "client_secret": "MG_TNT2ver-SylNat-_VeMmd-4m0Waba0jr1troztBniSChEw0glxEmgEi2Kw40H",
+    "app_type": "",
+    "logo_uri": "",
+    "is_first_party": false,
+    "oidc_conformant": false,
+    "callbacks": [
+      "http://localhost/callback"
+    ],
+    "allowed_origins": [
+      ""
+    ],
+    "client_aliases": [
+      ""
+    ],
+    "allowed_clients": [
+      ""
+    ],
+    "allowed_logout_urls": [
+      "http://localhost/logoutCallback"
+    ],
+    "jwt_configuration": {
+      "lifetime_in_seconds": 36000,
+      "secret_encoded": true,
+      "scopes": {},
+      "alg": "HS256"
+    },
+    "signing_keys": [
+      "object"
+    ],
+    "encryption_key": {
+      "pub": "",
+      "cert": "",
+      "subject": ""
+    },
+    "sso": false,
+    "sso_disabled": false,
+    "custom_login_page_on": true,
+    "custom_login_page": "",
+    "custom_login_page_preview": "",
+    "form_template": "",
+    "addons": {},
+    "token_endpoint_auth_method": "none",
+    "resource_servers": [
+      {
+        "identifier": "api.tenant.com",
+        "scopes": [
+          "read:something"
+        ]
+      }
+    ],
+    "client_metadata": {},
+    "mobile": {
+      "android": {
+        "app_package_name": "com.example",
+        "sha256_cert_fingerprints": [
+          "D8:A0:83:..."
+        ]
+      },
+      "ios": {
+        "team_id": "9JA89QQLNQ",
+        "app_bundle_identifier": "com.my.bundle.id"
+      }
+    }
+  }
+]
