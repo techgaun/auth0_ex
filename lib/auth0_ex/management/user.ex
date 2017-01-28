@@ -25,7 +25,7 @@ defmodule Auth0Ex.Management.User do
   def get(user_id, params \\ %{}) when is_binary(user_id) and is_map(params) do
     do_get("#{@path}/#{user_id}", params)
   end
-  
+
   @doc """
   Creates a user for the specified connection
 
@@ -53,4 +53,57 @@ defmodule Auth0Ex.Management.User do
     do_delete("#{@path}/#{user_id}")
   end
 
+  @doc """
+  Get a user's log
+
+      iex> Auth0Ex.Management.User.log("auth0|233423")
+      iex> Auth0Ex.Management.User.log("auth0|23423", page: 2, per_page: 10)
+  """
+  def log(user_id, params) do
+    do_get("#{@path}/#{user_id}/logs", params)
+  end
+
+  @doc """
+  Get all Guardain enrollments for given user_id
+
+      iex> Auth0Ex.Management.User.enrollments("auth0|234")
+  """
+  def enrollments(user_id), do: do_get("#{@path}/#{user_id}/enrollments", %{})
+
+  @doc """
+  Deletes a user's multifactor provider
+
+      iex> Auth0Ex.Management.User.delete_mfprovider("auth0|23423", "duo")
+  """
+  def delete_mfprovider(user_id, provider) do
+    do_delete("#{@path}/#{user_id}/multifactor/#{provider}")
+  end
+
+  @doc """
+  Unlinks an identity from the target user, and it becomes a separated user again.
+
+      iex> Auth0Ex.Management.User.unlink("some_user_id", "github", "23984234")
+  """
+  def unlink(primary_id, provider, secondary_id) do
+    do_delete("#{@path}/#{primary_id}/identities/#{provider}/#{secondary_id}")
+  end
+
+  @doc """
+  Removes current Guardain recovery code and generates new one
+
+      iex> Auth0Ex.Management.User.regenerate_recovery_code("auth0|34234")
+  """
+  def regenerate_recovery_code(id) do
+    do_post("#{@path}/#{id}/recovery-code-regeneration")
+  end
+
+  @doc """
+  Links the account specified in the body to the given user_id param
+
+      iex> Auth0Ex.Management.User.link("some_user_id", link_with: "secondary_acc_jwt")
+      iex> Auth0Ex.Management.User.link("some_user_id", provider: "github", user_id: "23423", connection_id: "som")
+  """
+  def link(id, body) do
+    do_post("#{@path}/#{id}/identities", body)
+  end
 end
