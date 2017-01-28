@@ -4,24 +4,33 @@
 
 > An elixir client library for Auth0
 
-This is work in progress that I'm trying to do on my free time.
-
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+Currently, the package is not published to hex yet. Please use github repo as your package source:
 
-  1. Add `auth0_ex` to your list of dependencies in `mix.exs`:
+```elixir
+def deps do
+  [{:auth0_ex, github: "techgaun/auth0_ex"}]
+end
+```
 
-    ```elixir
-    def deps do
-      [{:auth0_ex, "~> 0.1.0"}]
-    end
-    ```
+Ensure `auth0_ex` is started before your application:
 
-  2. Ensure `auth0_ex` is started before your application:
+```elixir
+def application do
+  [applications: [:auth0_ex]]
+end
+```
 
-    ```elixir
-    def application do
-      [applications: [:auth0_ex]]
-    end
-    ```
+## Configuration
+
+Add a configuration block like below:
+
+```elixir
+config :auth0_ex,
+  domain: System.get_env("AUTH0_DOMAIN"),
+  mgmt_token: System.get_env("AUTH0_MGMT_TOKEN"),
+  http_opts: []
+```
+
+Export appropriate environment variable and you should be all set.
