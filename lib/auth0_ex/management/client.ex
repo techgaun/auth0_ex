@@ -33,7 +33,7 @@ defmodule Auth0Ex.Management.Client do
       iex> Auth0Ex.Management.Client.create(%{name: "Samars App"})
   """
   def create(body) do
-    do_post("#{@path}", body)
+    do_post(@path, body)
   end
 
   @doc """
