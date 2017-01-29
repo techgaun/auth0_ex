@@ -23,7 +23,6 @@ defmodule Auth0Ex.Api do
         do_get(path, Enum.into(params, %{}))
       end
 
-      @doc false
       def do_post(path, body \\ %{})
 
       @doc false
@@ -41,8 +40,14 @@ defmodule Auth0Ex.Api do
         do_request(:put, path, %{}, Poison.encode!(body))
       end
 
+      def do_patch(path, body \\ %{})
+
       @doc false
-      def do_patch(path, body \\ %{}) do
+      def do_patch(path, body) when is_list(body) do
+        do_patch(path, Enum.into(body, %{}))
+      end
+      @doc false
+      def do_patch(path, body) do
         do_request(:patch, path, %{}, Poison.encode!(body))
       end
 
