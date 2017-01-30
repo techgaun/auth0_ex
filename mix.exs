@@ -10,7 +10,12 @@ defmodule Auth0Ex.Mixfile do
      preferred_cli_env: [
        vcr: :test, "vcr.delete": :test, "vcr.check": :test, "vcr.show": :test
      ],
-     deps: deps()]
+     deps: deps(),
+     package: package(),
+     description: "An elixir client library for Auth0",
+     source_url: "https://github.com/techgaun/auth0_ex",
+     docs: [extras: ["README.md"]]
+   ]
   end
 
   # Configuration for the OTP application
@@ -33,7 +38,18 @@ defmodule Auth0Ex.Mixfile do
     [
       {:httpoison, "~> 0.9 or ~> 0.10"},
       {:poison, "~> 2.0 or ~> 3.0"},
-      {:exvcr, "~> 0.8", only: :test}
+      {:exvcr, "~> 0.8", only: :test},
+      {:ex_doc, "~> 0.14.5", only: [:dev]}
+    ]
+  end
+
+  defp package do
+    [
+      maintainers: [
+        "Samar Acharya"
+      ],
+      licenses: ["Apache-2.0"],
+      links: %{"GitHub" => "https://github.com/techgaun/auth0_ex"}
     ]
   end
 end
