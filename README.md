@@ -6,7 +6,15 @@
 
 ## Installation
 
-Currently, the package is not published to hex yet. Please use github repo as your package source:
+You can install the stable version from hex:
+
+```elixir
+def deps do
+[{:auth0_ex, "~> 0.1"}]
+end
+```
+
+Please use github repo as your package source to use the latest source code:
 
 ```elixir
 def deps do
