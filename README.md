@@ -34,6 +34,22 @@ end
 
 Add a configuration block like below:
 
+- First option is to use management api client.
+
+You can create non-interactive client for management api as described [HERE](https://auth0.com/docs/api/management/v2/tokens).
+Once you do that, you should be able to grab client ID and client secret from the setting page for use with Auth0Ex.
+This is a recommended setup as Auth0Ex can recreate new `access_token` when the current one expires.
+
+```elixir
+config :auth0_ex,
+  domain: System.get_env("AUTH0_DOMAIN"),
+  mgmt_client_id: System.get_env("AUTH0_MGMT_CLIENT_ID"),
+  mgmt_client_secret: System.get_env("AUTH0_MGMT_CLIENT_SECRET"),
+  http_opts: []
+```
+
+- Second option is to use pre-created token with access to management API.
+
 ```elixir
 config :auth0_ex,
   domain: System.get_env("AUTH0_DOMAIN"),
@@ -41,4 +57,12 @@ config :auth0_ex,
   http_opts: []
 ```
 
+_Note: if you use pre-created management token, it will always be used for your requests_
+
 Export appropriate environment variable and you should be all set.
+
+Please refer to the [documentation](https://hexdocs.pm/auth0_ex/) for more details.
+
+## Author
+
+- [techgaun](https://github.com/techgaun)
