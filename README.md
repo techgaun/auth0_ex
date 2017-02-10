@@ -1,6 +1,6 @@
 # Auth0Ex
 
-[![Build Status](https://travis-ci.org/techgaun/auth0_ex.svg?branch=master)](https://travis-ci.org/techgaun/auth0_ex)
+[![Hex version](https://img.shields.io/hexpm/v/auth0_ex.svg "Hex version")](https://hex.pm/packages/auth0_ex) ![Hex downloads](https://img.shields.io/hexpm/dt/auth0_ex.svg "Hex downloads") [![Build Status](https://travis-ci.org/techgaun/auth0_ex.svg?branch=master)](https://travis-ci.org/techgaun/auth0_ex)
 
 > An elixir client library for Auth0
 
