@@ -13,7 +13,7 @@ defmodule Auth0Ex.Application do
       # Starts a worker by calling: Auth0Ex.Worker.start_link(arg1, arg2, arg3)
       # worker(Auth0Ex.Worker, [arg1, arg2, arg3]),
 
-      worker(Auth0Ex.Management.TokenState, [])
+      worker(Auth0Ex.TokenState, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
