@@ -67,7 +67,7 @@ defmodule Auth0Ex.Utils do
     token
     |> String.split(".")
     |> Enum.at(1)
-    |> Base.decode64!()
+    |> Base.url_decode64!(padding: false)
     |> Poison.decode!()
     |> Map.get("exp")
     |> Kernel.<(DateTime.utc_now |> DateTime.to_unix)
