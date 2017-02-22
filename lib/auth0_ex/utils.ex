@@ -28,7 +28,8 @@ defmodule Auth0Ex.Utils do
   defp get_token_from_client do
     case TokenState.get(:mgmt_token) do
       token when is_binary(token) ->
-        if expired?(token) do
+        exp = TokenState.get(:exp)
+        if expired?(exp) do
           fetch_mgmt_token()
         else
           token
@@ -60,16 +61,18 @@ defmodule Auth0Ex.Utils do
       |> Map.get("access_token")
 
     TokenState.put(:mgmt_token, token)
+    TokenState.put(:exp, exp_from_token(token))
     token
   end
 
-  defp expired?(token) do
+  defp exp_from_token(token) do
     token
     |> String.split(".")
     |> Enum.at(1)
     |> Base.url_decode64!(padding: false)
     |> Poison.decode!()
     |> Map.get("exp")
-    |> Kernel.<(DateTime.utc_now |> DateTime.to_unix)
   end
+
+  defp expired?(exp), do: exp <= (DateTime.utc_now() |> DateTime.to_unix())
 end
