@@ -46,22 +46,9 @@ defmodule Auth0Ex.Utils do
   defp fetch_mgmt_token do
     client_id = get_config(:mgmt_client_id)
     client_secret = get_config(:mgmt_client_secret)
-    payload = %{
-      "client_id" => client_id,
-      "client_secret" => client_secret,
-      "audience" => base_url(:mgmt),
-      "grant_type" => "client_credentials"
-    }
 
-    header = [{"Content-Type", "application/json"}]
-
-    token =
-      oauth_url()
-      |> HTTPoison.post!(Poison.encode!(payload), header, http_opts())
-      |> Map.from_struct
-      |> Map.get(:body)
-      |> Poison.decode!()
-      |> Map.get("access_token")
+    {:ok, %{"access_token" => token}} =
+      Auth0Ex.Authentication.Token.client_credentials(client_id, client_secret, base_url(:mgmt))
 
     TokenState.put(:mgmt_token, token)
     TokenState.put(:exp, exp_from_token(token))
