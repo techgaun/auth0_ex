@@ -2,7 +2,7 @@ defmodule Auth0Ex.Management.ClientGrant do
   @moduledoc """
   A module representing client_grant resource
   """
-  use Auth0Ex.Api
+  use Auth0Ex.Api, for: :mgmt
   @path "client-grants"
 
   @doc """

@@ -2,7 +2,7 @@ defmodule Auth0Ex.Management.ResourceServer do
   @moduledoc """
   A module representing resource servers resource on Auth0
   """
-  use Auth0Ex.Api
+  use Auth0Ex.Api, for: :mgmt
   @path "resource-servers"
 
   @doc """

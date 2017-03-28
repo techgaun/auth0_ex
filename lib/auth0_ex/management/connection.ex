@@ -2,7 +2,7 @@ defmodule Auth0Ex.Management.Connection do
   @moduledoc """
   A module representing connection resource
   """
-  use Auth0Ex.Api
+  use Auth0Ex.Api, for: :mgmt
   @path "connections"
 
   @doc """

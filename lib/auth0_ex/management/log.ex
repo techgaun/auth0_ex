@@ -2,7 +2,7 @@ defmodule Auth0Ex.Management.Log do
   @moduledoc """
   A module represeting log resource on Auth0
   """
-  use Auth0Ex.Api
+  use Auth0Ex.Api, for: :mgmt
   @path "logs"
 
   @doc """

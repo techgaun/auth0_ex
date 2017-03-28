@@ -1,16 +1,21 @@
 defmodule Auth0Ex.Api do
   @moduledoc """
   The main API module supposed to be used by individual authentication and management API modules
+
+  Example Usage would look something like below:
+
+      use Auth0Ex.Api
+      use Auth0Ex.Api, for: :mgmt
   """
 
-  defmacro __using__(_opts) do
+  defmacro __using__(opts) do
     quote do
       alias Auth0Ex.Parser
       import Auth0Ex.Utils
 
       @doc false
       def build_url(path, params) do
-        "#{base_url()}#{path}?#{URI.encode_query(params)}"
+        "#{base_url(unquote(opts)[:for])}#{path}?#{URI.encode_query(params)}"
       end
 
       @doc false
