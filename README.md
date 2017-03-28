@@ -14,7 +14,7 @@ def deps do
 end
 ```
 
-Please use github repo as your package source to use the latest source code:
+You can use github repo as your package source to use the latest source code but beware it might have breaking and unstable code:
 
 ```elixir
 def deps do
@@ -62,6 +62,12 @@ _Note: if you use pre-created management token, it will always be used for your 
 Export appropriate environment variable and you should be all set.
 
 Please refer to the [documentation](https://hexdocs.pm/auth0_ex/) for more details.
+
+### Authentication API
+
+In addition to the management API resources, there is also a support for most used authentication APIs.
+Authentication API will use the same `domain` config you specify in the config above. If you wish to use `Auth0Ex`
+for authentication APIs only, all you need to specify is `domain` in config.
 
 ## Author
 
