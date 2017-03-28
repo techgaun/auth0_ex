@@ -2,7 +2,7 @@ defmodule Auth0Ex.Management.Blacklist do
   @moduledoc """
   A module representing blacklisted tokens on Auth0
   """
-  use Auth0Ex.Api
+  use Auth0Ex.Api, for: :mgmt
   @path "blacklists/tokens"
 
   @doc """

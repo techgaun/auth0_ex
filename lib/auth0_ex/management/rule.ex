@@ -2,7 +2,7 @@ defmodule Auth0Ex.Management.Rule do
   @moduledoc """
   A module representing rule on Auth0
   """
-  use Auth0Ex.Api
+  use Auth0Ex.Api, for: :mgmt
   @path "rules"
 
   @doc """

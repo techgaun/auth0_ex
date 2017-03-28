@@ -2,7 +2,7 @@ defmodule Auth0Ex.Management.DeviceCredential do
   @moduledoc """
   A module representing device credential resource on Auth0
   """
-  use Auth0Ex.Api
+  use Auth0Ex.Api, for: :mgmt
   @path "device-credentials"
 
   @doc """

@@ -4,7 +4,9 @@ defmodule Auth0Ex.Utils do
   """
   alias Auth0Ex.TokenState
 
-  def base_url, do: "https://#{domain()}.auth0.com/api/v2/"
+  def base_url, do: "https://#{domain()}.auth0.com/"
+  def base_url(:mgmt), do: "#{base_url()}api/v2/"
+  def base_url(_), do: base_url()
   def oauth_url, do: "https://#{domain()}.auth0.com/oauth/token"
   def domain, do: get_config(:domain)
 
@@ -46,7 +48,7 @@ defmodule Auth0Ex.Utils do
     payload = %{
       "client_id" => client_id,
       "client_secret" => client_secret,
-      "audience" => base_url(),
+      "audience" => base_url(:mgmt),
       "grant_type" => "client_credentials"
     }
 

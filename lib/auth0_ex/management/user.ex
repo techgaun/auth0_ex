@@ -3,7 +3,7 @@ defmodule Auth0Ex.Management.User do
   A module representing users on Auth0
   """
 
-  use Auth0Ex.Api
+  use Auth0Ex.Api, for: :mgmt
   @path "users"
 
   @doc """

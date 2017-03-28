@@ -2,7 +2,7 @@ defmodule Auth0Ex.Management.EmailProvider do
   @moduledoc """
   A module representing emails resource on Auth0
   """
-  use Auth0Ex.Api
+  use Auth0Ex.Api, for: :mgmt
   @path "emails/provider"
 
   @doc """
