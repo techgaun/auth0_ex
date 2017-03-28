@@ -69,7 +69,7 @@ defmodule Auth0Ex.Api do
       defp do_request(method, path, params \\ %{}, req_body \\ "") do
         uri = build_url(path, params)
         method
-        |> HTTPoison.request(uri, req_body, req_header(), http_opts())
+        |> HTTPoison.request(uri, req_body, req_header(unquote(opts[:for])), http_opts())
         |> Parser.parse()
       end
     end
