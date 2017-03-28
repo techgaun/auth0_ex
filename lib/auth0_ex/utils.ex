@@ -23,7 +23,7 @@ defmodule Auth0Ex.Utils do
   def ua, do: get_config(:user_agent) || "Auth0Ex <https://github.com/techgaun/auth0_ex>"
 
   def req_header, do: [{"User-Agent", ua()}, {"Content-Type", "application/json"}]
-  def req_header(:mgmt), do: [{"Authorization", "Bearer #{mgmt_token()}"} ++ req_header()]
+  def req_header(:mgmt), do: [{"Authorization", "Bearer #{mgmt_token()}"}] ++ req_header()
   def req_header(_), do: req_header()
 
   defp get_config(key), do: Application.get_env(:auth0_ex, key)
