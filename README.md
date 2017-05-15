@@ -57,7 +57,10 @@ config :auth0_ex,
   http_opts: []
 ```
 
-_Note: if you use pre-created management token, it will always be used for your requests_
+### Notes
+
+- if you use pre-created management token, it will always be used for your requests_
+- `AUTH0_DOMAIN` should not include `auth0.com` but only the sub-domain name. eg: for `brighterlink.auth0.com`, domain in config must be `brighterlink`
 
 Export appropriate environment variable and you should be all set.
 
