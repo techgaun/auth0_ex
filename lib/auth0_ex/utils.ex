@@ -10,8 +10,8 @@ defmodule Auth0Ex.Utils do
       if String.ends_with?(auth0_domain, "auth0.com") do
         auth0_domain
       else
-        IO.puts "WARNING: setting domain without full base domain is deprecated and will be removed in future versions"
-        IO.puts "domain config should be : <your_tenant>[.optional_region].auth0.com, not just <your_tenant>"
+        IO.warn "setting domain without full base domain is deprecated and will be removed in future versions\n" <>
+          "domain config should be : <your_tenant>[.optional_region].auth0.com, not just <your_tenant>"
         "#{auth0_domain}.auth0.com"
       end
     "https://#{base_domain}/"
