@@ -60,7 +60,8 @@ config :auth0_ex,
 ### Notes
 
 - if you use pre-created management token, it will always be used for your requests_
-- `AUTH0_DOMAIN` should not include `auth0.com` but only the sub-domain name. eg: for `brighterlink.auth0.com`, domain in config must be `brighterlink`
+- `AUTH0_DOMAIN` should be entire tenant domain Auth0 provides. We fall back to adding `auth0.com` right now but that will be
+removed in future version. This allows us to use `Auth0Ex` in all tenant regions unlike the previous versions.
 
 Export appropriate environment variable and you should be all set.
 
