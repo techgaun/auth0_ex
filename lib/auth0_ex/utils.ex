@@ -4,10 +4,21 @@ defmodule Auth0Ex.Utils do
   """
   alias Auth0Ex.TokenState
 
-  def base_url, do: "https://#{domain()}.auth0.com/"
+  def base_url do
+    auth0_domain = domain()
+    base_domain =
+      if String.ends_with?(auth0_domain, "auth0.com") do
+        auth0_domain
+      else
+        IO.warn "setting domain without full base domain is deprecated and will be removed in future versions\n" <>
+          "domain config should be : <your_tenant>[.optional_region].auth0.com, not just <your_tenant>"
+        "#{auth0_domain}.auth0.com"
+      end
+    "https://#{base_domain}/"
+  end
   def base_url(:mgmt), do: "#{base_url()}api/v2/"
   def base_url(_), do: base_url()
-  def oauth_url, do: "https://#{domain()}.auth0.com/oauth/token"
+  def oauth_url, do: "#{base_url()}oauth/token"
   def domain, do: get_config(:domain)
 
   def mgmt_token do
