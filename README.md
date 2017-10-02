@@ -10,7 +10,7 @@ You can install the stable version from hex:
 
 ```elixir
 def deps do
-[{:auth0_ex, "~> 0.1"}]
+[{:auth0_ex, "~> 0.2"}]
 end
 ```
 
