@@ -41,7 +41,7 @@ defmodule Auth0Ex.Mixfile do
     [
       {:httpoison, "~> 0.9"},
       {:poison, "~> 2.0 or ~> 3.0"},
-      {:exvcr, "~> 0.8", only: :test},
+      {:exvcr, "~> 0.9.1", only: :test},
       {:ex_doc, "~> 0.14.5", only: [:dev]}
     ]
   end
