@@ -106,4 +106,14 @@ defmodule Auth0Ex.Management.User do
   def link(id, body) do
     do_post("#{@path}/#{id}/identities", body)
   end
+
+  @doc false
+  defp default_params do
+    case Application.get_env(:auth0_ex, :v2_search) do
+      true ->
+        %{}
+      _ ->
+        %{search_engine: "v3"}
+    end
+  end
 end
