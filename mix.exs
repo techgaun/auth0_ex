@@ -39,9 +39,9 @@ defmodule Auth0Ex.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:httpoison, "~> 0.9"},
+      {:httpoison, "~> 1.0.0"},
       {:poison, "~> 2.0 or ~> 3.0"},
-      {:exvcr, "~> 0.9.1", only: :test},
+      {:exvcr, "~> 0.10.1", only: :test},
       {:ex_doc, "~> 0.14.5", only: [:dev]}
     ]
   end
