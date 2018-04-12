@@ -15,7 +15,7 @@ defmodule Auth0Ex.Api do
 
       @doc false
       def build_url(path, params) do
-        "#{base_url(unquote(opts)[:for])}#{path}?#{URI.encode_query(params)}"
+        "#{base_url(unquote(opts)[:for])}#{path}?#{query_string(params)}"
       end
 
       @doc false
