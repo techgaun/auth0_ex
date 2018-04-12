@@ -72,6 +72,18 @@ defmodule Auth0Ex.Api do
         |> HTTPoison.request(uri, req_body, req_header(unquote(opts[:for])), http_opts())
         |> Parser.parse()
       end
+
+      defp query_string(params) do
+        default_params()
+        |> Map.merge(params)
+        |> URI.encode_query()
+      end
+
+      defp default_params do
+        %{}
+      end
+
+      defoverridable [default_params: 0]
     end
   end
 end
