@@ -18,9 +18,6 @@ defmodule Auth0Ex.Parser do
       {:ok, %HTTPoison.Response{body: _, headers: _, status_code: 204}} ->
         :ok
 
-      {:ok, %HTTPoison.Response{body: body}, status_code: status} when status in [400, 401, 403, 404, 429] ->
-        {:error, Poison.decode!(body)}
-
       {:ok, %HTTPoison.Response{body: body, headers: _, status_code: status}} ->
         {:error, body, status}
 
