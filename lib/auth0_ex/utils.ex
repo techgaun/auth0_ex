@@ -6,16 +6,22 @@ defmodule Auth0Ex.Utils do
 
   def base_url do
     auth0_domain = domain()
+
     base_domain =
       if String.ends_with?(auth0_domain, "auth0.com") do
         auth0_domain
       else
-        IO.warn "setting domain without full base domain is deprecated and will be removed in future versions\n" <>
-          "domain config should be : <your_tenant>[.optional_region].auth0.com, not just <your_tenant>"
+        IO.warn(
+          "setting domain without full base domain is deprecated and will be removed in future versions\n" <>
+            "domain config should be : <your_tenant>[.optional_region].auth0.com, not just <your_tenant>"
+        )
+
         "#{auth0_domain}.auth0.com"
       end
+
     "https://#{base_domain}/"
   end
+
   def base_url(:mgmt), do: "#{base_url()}api/v2/"
   def base_url(_), do: base_url()
   def oauth_url, do: "#{base_url()}oauth/token"
@@ -23,7 +29,8 @@ defmodule Auth0Ex.Utils do
 
   def mgmt_token do
     case get_config(:mgmt_token) do
-      token when is_binary(token) -> token
+      token when is_binary(token) ->
+        token
 
       _ ->
         get_token_from_client()
@@ -43,6 +50,7 @@ defmodule Auth0Ex.Utils do
     case TokenState.get(:mgmt_token) do
       token when is_binary(token) ->
         exp = TokenState.get(:exp)
+
         if expired?(exp) do
           fetch_mgmt_token()
         else
@@ -75,5 +83,5 @@ defmodule Auth0Ex.Utils do
     |> Map.get("exp")
   end
 
-  defp expired?(exp), do: exp <= (DateTime.utc_now() |> DateTime.to_unix())
+  defp expired?(exp), do: exp <= DateTime.utc_now() |> DateTime.to_unix()
 end

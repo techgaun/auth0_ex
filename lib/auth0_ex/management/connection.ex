@@ -22,6 +22,7 @@ defmodule Auth0Ex.Management.Connection do
       iex> Auth0Ex.Management.Connection.get("some_conn_id", [fields: "id,name"])
   """
   def get(id) when is_binary(id), do: get(id, [])
+
   def get(id, params) when is_binary(id) and (is_map(params) or is_list(params)) do
     do_get("#{@path}/#{id}", params)
   end

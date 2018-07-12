@@ -21,6 +21,6 @@ defmodule Auth0Ex.TokenState do
 
   @doc false
   def get_all do
-    Agent.get(__MODULE__, &(&1))
+    Agent.get(__MODULE__, & &1)
   end
 end

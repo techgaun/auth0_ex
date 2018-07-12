@@ -24,6 +24,7 @@ defmodule Auth0Ex.Authentication.Token do
       redirect_uri: redirect_uri,
       grant_type: "authorization_code"
     }
+
     do_post(@path, payload)
   end
 
@@ -42,6 +43,7 @@ defmodule Auth0Ex.Authentication.Token do
       redirect_uri: redirect_uri,
       grant_type: "authorization_code"
     }
+
     do_post(@path, payload)
   end
 
@@ -59,6 +61,7 @@ defmodule Auth0Ex.Authentication.Token do
       audience: audience,
       grant_type: "client_credentials"
     }
+
     do_post(@path, payload)
   end
 end

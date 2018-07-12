@@ -22,6 +22,7 @@ defmodule Auth0Ex.Management.Rule do
       iex> Auth0Ex.Management.Rule.get("some_rule", fields: "id,name")
   """
   def get(id) when is_binary(id), do: get(id, [])
+
   def get(id, params) when is_binary(id) and (is_map(params) or is_list(params)) do
     do_get("#{@path}/#{id}", params)
   end

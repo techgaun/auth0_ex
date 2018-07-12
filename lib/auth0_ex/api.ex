@@ -51,6 +51,7 @@ defmodule Auth0Ex.Api do
       def do_patch(path, body) when is_list(body) do
         do_patch(path, Enum.into(body, %{}))
       end
+
       @doc false
       def do_patch(path, body) do
         do_request(:patch, path, %{}, Poison.encode!(body))
@@ -68,6 +69,7 @@ defmodule Auth0Ex.Api do
 
       defp do_request(method, path, params \\ %{}, req_body \\ "") do
         uri = build_url(path, params)
+
         method
         |> HTTPoison.request(uri, req_body, req_header(unquote(opts[:for])), http_opts())
         |> Parser.parse()
@@ -83,7 +85,7 @@ defmodule Auth0Ex.Api do
         %{}
       end
 
-      defoverridable [default_params: 0]
+      defoverridable default_params: 0
     end
   end
 end

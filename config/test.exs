@@ -5,8 +5,7 @@ config :auth0_ex,
   mgmt_token: System.get_env("AUTH0_MGMT_TOKEN"),
   http_opts: []
 
-config :exvcr, [
+config :exvcr,
   vcr_cassette_library_dir: "fixture/vcr_cassettes",
   custom_cassette_library_dir: "fixture/custom_cassettes",
   filter_request_headers: ["Authorization"]
-]

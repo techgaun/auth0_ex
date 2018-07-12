@@ -4,7 +4,7 @@ defmodule Auth0Ex.Management.ClientTest do
   alias Auth0Ex.Management.Client
 
   setup_all do
-    HTTPoison.start
+    HTTPoison.start()
   end
 
   test "get all client" do

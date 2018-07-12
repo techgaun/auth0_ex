@@ -20,6 +20,7 @@ defmodule Auth0Ex.Authentication.Login do
       connection: connection,
       scope: scope
     }
+
     do_post("oauth/access_token", payload)
   end
 
@@ -38,7 +39,8 @@ defmodule Auth0Ex.Authentication.Login do
       iex> Auth0Ex.Authentication.Login.database("client_id", "samar", "samarpwd", "dev", "password")
       iex> Auth0Ex.Authentication.Login.database("client_id", "samar", "samarpwd", "dev", "password", %{scope: "openid app_metadata"})
   """
-  def database(client_id, username, password, connection, grant_type, params \\ %{}) when is_map(params) do
+  def database(client_id, username, password, connection, grant_type, params \\ %{})
+      when is_map(params) do
     payload = %{
       client_id: client_id,
       username: username,
@@ -46,6 +48,7 @@ defmodule Auth0Ex.Authentication.Login do
       connection: connection,
       grant_type: grant_type
     }
+
     do_post("oauth/ro", Map.merge(payload, params))
   end
 end

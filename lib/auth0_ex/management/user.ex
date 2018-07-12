@@ -112,6 +112,7 @@ defmodule Auth0Ex.Management.User do
     case Application.get_env(:auth0_ex, :v2_search) do
       true ->
         %{}
+
       _ ->
         %{search_engine: "v3"}
     end
