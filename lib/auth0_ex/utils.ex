@@ -8,7 +8,7 @@ defmodule Auth0Ex.Utils do
     auth0_domain = domain()
 
     base_domain =
-      if String.ends_with?(auth0_domain, "auth0.com") do
+      if String.ends_with?(auth0_domain, "auth0.com") or custom_domain() do
         auth0_domain
       else
         IO.warn(
@@ -26,6 +26,12 @@ defmodule Auth0Ex.Utils do
   def base_url(_), do: base_url()
   def oauth_url, do: "#{base_url()}oauth/token"
   def domain, do: get_config(:domain)
+
+  def custom_domain do
+    :auth0_ex
+    |> Application.get_env(:custom_domain, false)
+    |> Kernel.in([true, "true"])
+  end
 
   def mgmt_token do
     case get_config(:mgmt_token) do

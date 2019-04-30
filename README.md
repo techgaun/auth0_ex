@@ -61,8 +61,8 @@ config :auth0_ex,
 
 - The v2 `search_engine` API is being deprecated by Auth0.  User queries now specify `search_engine=v3` by default.  If for some reason you need the `v2` engine you can set `v2_search: true` in your config block.
 - if you use pre-created management token, it will always be used for your requests_
-- `AUTH0_DOMAIN` should be entire tenant domain Auth0 provides. We fall back to adding `auth0.com` right now but that will be
-removed in future version. This allows us to use `Auth0Ex` in all tenant regions unlike the previous versions.
+- `AUTH0_DOMAIN` should be entire tenant domain Auth0 provides. We fall back to adding `auth0.com` right now but that will be removed in future version. This allows us to use `Auth0Ex` in all tenant regions unlike the previous versions.
+- If you don't want `auth0.com` to be added, you can set `config :auth0_ex, custom_domain: true`
 
 Export appropriate environment variable and you should be all set.
 
