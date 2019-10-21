@@ -15,7 +15,7 @@ defmodule Auth0Ex.Parser do
     case response do
       {:ok, %HTTPoison.Response{body: body, headers: _, status_code: status}}
       when status in [200, 201] ->
-        {:ok, Poison.decode!(body)}
+        {:ok, Jason.decode!(body)}
 
       {:ok, %HTTPoison.Response{body: _, headers: _, status_code: 204}} ->
         :ok
