@@ -4,8 +4,8 @@ defmodule Auth0Ex.Mixfile do
   def project do
     [
       app: :auth0_ex,
-      version: "0.4.0",
-      elixir: "~> 1.3",
+      version: "0.5.0",
+      elixir: "~> 1.5",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       preferred_cli_env: [
@@ -22,29 +22,17 @@ defmodule Auth0Ex.Mixfile do
     ]
   end
 
-  # Configuration for the OTP application
-  #
-  # Type "mix help compile.app" for more information
   def application do
     [
-      applications: [:logger, :httpoison, :poison],
+      applications: [:logger, :httpoison, :jason],
       mod: {Auth0Ex.Application, []}
     ]
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:mydep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:httpoison, "~> 1.0.0"},
-      {:poison, "~> 2.0 or ~> 3.0 or ~> 4.0"},
+      {:httpoison, "~> 1.6"},
+      {:jason, "~> 1.1"},
       {:exvcr, "~> 0.10.1", only: :test},
       {:ex_doc, "~> 0.19", only: [:dev]}
     ]

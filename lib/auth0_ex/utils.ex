@@ -85,7 +85,7 @@ defmodule Auth0Ex.Utils do
     |> String.split(".")
     |> Enum.at(1)
     |> Base.url_decode64!(padding: false)
-    |> Poison.decode!()
+    |> Jason.decode!()
     |> Map.get("exp")
   end
 

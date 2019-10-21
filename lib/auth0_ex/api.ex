@@ -37,12 +37,12 @@ defmodule Auth0Ex.Api do
 
       @doc false
       def do_post(path, body) do
-        do_request(:post, path, %{}, Poison.encode!(body))
+        do_request(:post, path, %{}, Jason.encode!(body))
       end
 
       @doc false
       def do_put(path, body \\ %{}) do
-        do_request(:put, path, %{}, Poison.encode!(body))
+        do_request(:put, path, %{}, Jason.encode!(body))
       end
 
       def do_patch(path, body \\ %{})
@@ -54,7 +54,7 @@ defmodule Auth0Ex.Api do
 
       @doc false
       def do_patch(path, body) do
-        do_request(:patch, path, %{}, Poison.encode!(body))
+        do_request(:patch, path, %{}, Jason.encode!(body))
       end
 
       @doc false
