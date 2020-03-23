@@ -4,7 +4,7 @@ defmodule Auth0Ex.Mixfile do
   def project do
     [
       app: :auth0_ex,
-      version: "0.5.0",
+      version: "0.6.0",
       elixir: "~> 1.7",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
