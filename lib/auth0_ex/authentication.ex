@@ -12,9 +12,20 @@ defmodule Auth0Ex.Authentication do
   Given a user's credentials, and a connection, this endpoint will create
   a new user using active authentication. This endpoint only works for database connections.
 
-      iex> Auth0Ex.Authentication.signup("client_id", "samar@example.com", "password", "some-connection")
+  API Management https://auth0.com/docs/api/authentication#signup
+
+  client_id: is part of your configuration and you should get via `Application.get_env/2`
+  connection: is an auth0 concept; They list the following connections `database, social, enterprise, or passwordless connection`.
+
+  A use case should be, we want to use the database connection to create new signup, the value for that connection is in the dashboard inside of `Connections -> Database` or at the URL `https://manage.auth0.com/dashboard/us/<tenant>/connections/database`.
+
+  NOTE: The default name for the database connection is `Username-Password-Authentication`. You can create a new database connection instead.
+
+      iex> client_id = Application.get_env(:auth0_ex, :mgmt_client_id)
+      iex> connection = "Username-Password-Authentication"
+      iex> Auth0Ex.Authentication.signup(client_id, "samar@example.com", "password", connection, %{user_metadata: %{plan: "silver", team_id: "a111"}})
   """
-  def signup(client_id, email, password, connection) do
+  def signup(client_id, email, password, connection, extra_params \\ %{}) do
     payload = %{
       client_id: client_id,
       email: email,
@@ -22,7 +33,7 @@ defmodule Auth0Ex.Authentication do
       connection: connection
     }
 
-    do_post("dbconnections/signup", payload)
+    do_post("dbconnections/signup", Map.merge(payload, extra_params))
   end
 
   @doc """
