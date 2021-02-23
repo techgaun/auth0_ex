@@ -10,7 +10,7 @@ defmodule Auth0Ex.Management.User do
   Gets all the users
 
       iex> Auth0Ex.Management.User.all()
-      iex> Auth0Ex.Management.User.all(fields: "name", q: "app_metadata.admin:'true'")
+      iex> Auth0Ex.Management.User.all(%{fields: "name", q: "app_metadata.admin:'true'"})
   """
   def all(params \\ %{}) when is_map(params) or is_list(params) do
     do_get(@path, params)
@@ -57,7 +57,7 @@ defmodule Auth0Ex.Management.User do
   Get a user's log
 
       iex> Auth0Ex.Management.User.log("auth0|233423")
-      iex> Auth0Ex.Management.User.log("auth0|23423", page: 2, per_page: 10)
+      iex> Auth0Ex.Management.User.log("auth0|23423", %{page: 2, per_page: 10})
   """
   def log(user_id, params) do
     do_get("#{@path}/#{user_id}/logs", params)
