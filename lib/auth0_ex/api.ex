@@ -9,7 +9,7 @@ defmodule Auth0Ex.Api do
   """
 
   defmacro __using__(opts) do
-    quote do
+    quote location: :keep do
       alias Auth0Ex.Parser
       import Auth0Ex.Utils
 
