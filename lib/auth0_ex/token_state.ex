@@ -4,8 +4,10 @@ defmodule Auth0Ex.TokenState do
   and potentially other stuff in future for management API
   """
 
+  use Agent
+
   @doc false
-  def start_link do
+  def start_link(_initial_value) do
     Agent.start_link(fn -> %{} end, name: __MODULE__)
   end
 
