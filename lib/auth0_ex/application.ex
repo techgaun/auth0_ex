@@ -11,9 +11,9 @@ defmodule Auth0Ex.Application do
     # Define workers and child supervisors to be supervised
     children = [
       # Starts a worker by calling: Auth0Ex.Worker.start_link(arg1, arg2, arg3)
-      # worker(Auth0Ex.Worker, [arg1, arg2, arg3]),
+      # {Auth0Ex.Worker, [arg1, arg2, arg3]},
 
-      worker(Auth0Ex.TokenState, [])
+      {Auth0Ex.TokenState, []}
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
