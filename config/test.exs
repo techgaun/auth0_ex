@@ -1,8 +1,8 @@
 import Config
 
 config :auth0_ex,
-  domain: System.get_env("AUTH0_DOMAIN"),
-  mgmt_token: System.get_env("AUTH0_MGMT_TOKEN"),
+  domain: "brighterlink.auth0.com",
+  mgmt_token: "TESTTOKEN",
   http_opts: []
 
 config :exvcr,
