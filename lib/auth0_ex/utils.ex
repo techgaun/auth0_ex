@@ -2,6 +2,7 @@ defmodule Auth0Ex.Utils do
   @moduledoc """
   Collection module of various utils needed for Auth0Ex
   """
+  alias Auth0Ex.Authentication.Token
   alias Auth0Ex.TokenState
 
   def base_url do
@@ -73,7 +74,7 @@ defmodule Auth0Ex.Utils do
     client_secret = get_config(:mgmt_client_secret)
 
     {:ok, %{"access_token" => token}} =
-      Auth0Ex.Authentication.Token.client_credentials(client_id, client_secret, base_url(:mgmt))
+      Token.client_credentials(client_id, client_secret, base_url(:mgmt))
 
     TokenState.put(:mgmt_token, token)
     TokenState.put(:exp, exp_from_token(token))
