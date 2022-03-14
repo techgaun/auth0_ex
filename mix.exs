@@ -35,7 +35,7 @@ defmodule Auth0Ex.Mixfile do
       {:jason, "~> 1.1"},
       {:credo, "~> 1.6", only: [:dev, :test]},
       {:exvcr, "~> 0.13", only: :test},
-      {:ex_doc, "~> 0.19", only: [:dev]}
+      {:ex_doc, "~> 0.27", only: [:dev]}
     ]
   end
 
