@@ -1,10 +1,13 @@
 defmodule Auth0Ex.Mixfile do
   use Mix.Project
 
+  @source_url "https://github.com/techgaun/auth0_ex"
+  @version "0.7.0"
+
   def project do
     [
       app: :auth0_ex,
-      version: "0.7.0",
+      version: @version,
       elixir: "~> 1.7",
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
@@ -17,8 +20,8 @@ defmodule Auth0Ex.Mixfile do
       deps: deps(),
       package: package(),
       description: "An elixir client library for Auth0",
-      source_url: "https://github.com/techgaun/auth0_ex",
-      docs: [extras: ["README.md"]]
+      source_url: @source_url,
+      docs: docs()
     ]
   end
 
@@ -35,7 +38,7 @@ defmodule Auth0Ex.Mixfile do
       {:jason, "~> 1.1"},
       {:credo, "~> 1.6", only: [:dev, :test]},
       {:exvcr, "~> 0.13", only: :test},
-      {:ex_doc, "~> 0.19", only: [:dev]}
+      {:ex_doc, "~> 0.27", only: [:dev]}
     ]
   end
 
@@ -45,7 +48,15 @@ defmodule Auth0Ex.Mixfile do
         "Samar Acharya"
       ],
       licenses: ["Apache-2.0"],
-      links: %{"GitHub" => "https://github.com/techgaun/auth0_ex"}
+      links: %{"GitHub" => @source_url}
+    ]
+  end
+
+  defp docs do
+    [
+      extras: ["README.md"],
+      source_ref: "v#{@version}",
+      source_url: @source_url
     ]
   end
 end
