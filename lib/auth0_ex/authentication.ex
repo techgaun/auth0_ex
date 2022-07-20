@@ -7,6 +7,7 @@ defmodule Auth0Ex.Authentication do
   resourceful nature of each object but as useful for Authentication APIs.
   """
   use Auth0Ex.Api
+  @db_conn_path "dbconnections"
 
   @doc """
   Given a user's credentials, and a connection, this endpoint will create
@@ -33,7 +34,27 @@ defmodule Auth0Ex.Authentication do
       connection: connection
     }
 
-    do_post("dbconnections/signup", Map.merge(payload, extra_params))
+    do_post("#{@db_conn_path}/signup", Map.merge(payload, extra_params))
+  end
+
+  @doc """
+  Given a user's email address and a connection, Auth0 will send a change password email.
+  This endpoint only works for database connections.
+
+  https://auth0.com/docs/api/authentication#change-password
+
+      iex> client_id = Application.get_env(:auth0_ex, :mgmt_client_id)
+      iex> connection = "Username-Password-Authentication"
+      iex> Auth0Ex.Authentication.change_password(client_id, "samar@example.com", connection)
+  """
+  def change_password(client_id, email, connection) do
+    payload = %{
+      client_id: client_id,
+      email: email,
+      connection: connection
+    }
+
+    do_post("#{@db_conn_path}/change_password", payload)
   end
 
   @doc """
