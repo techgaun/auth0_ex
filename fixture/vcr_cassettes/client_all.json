@@ -16,7 +16,7 @@
       "body": "[{\"name\":\"Samar Staging\"},{\"name\":\"Samar Dev\"},{\"name\":\"Samar\"},{\"name\":\"Auth0 Management API (Test Client)\"},{\"name\":\"Samar Present\"},{\"name\":\"All Applications\"}]",
       "headers": {
         "Date": "Thu, 12 Jan 2017 07:56:34 GMT",
-        "Content-Type": "application/json; charset=utf-8",
+        "Content-Type": "application/json",
         "Content-Length": "191",
         "Connection": "keep-alive",
         "Keep-Alive": "timeout=100",
