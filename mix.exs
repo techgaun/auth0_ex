@@ -2,7 +2,7 @@ defmodule Auth0Ex.Mixfile do
   use Mix.Project
 
   @source_url "https://github.com/techgaun/auth0_ex"
-  @version "0.7.0"
+  @version "0.8.0"
 
   def project do
     [
