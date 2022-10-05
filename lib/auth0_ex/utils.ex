@@ -27,8 +27,8 @@ defmodule Auth0Ex.Utils do
   def http_opts, do: Config.http_opts()
   def ua, do: Config.user_agent()
 
-  def req_header, do: [{"User-Agent", ua()}, {"Content-Type", "application/json"}]
-  def req_header(:mgmt), do: [{"Authorization", "Bearer #{mgmt_token()}"}] ++ req_header()
+  def req_header, do: [{"user-agent", ua()}, {"content-type", "application/json"}]
+  def req_header(:mgmt), do: [{"authorization", "Bearer #{mgmt_token()}"}] ++ req_header()
   def req_header(_), do: req_header()
 
   defp get_token_from_client do
