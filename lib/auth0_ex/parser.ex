@@ -13,9 +13,9 @@ defmodule Auth0Ex.Parser do
   @spec parse(tuple) :: response
   def parse(response) do
     case response do
-      {:ok, %HTTPoison.Response{body: body, headers: headers, status_code: status}}
+      {:ok, %HTTPoison.Response{body: body, headers: _, status_code: status}}
       when status in [200, 201] ->
-        parse_json_or_html(headers, body)
+        maybe_decode(body)
 
       {:ok, %HTTPoison.Response{body: _, headers: _, status_code: 204}} ->
         :ok
@@ -31,16 +31,10 @@ defmodule Auth0Ex.Parser do
     end
   end
 
-  defp parse_json_or_html(headers, body) do
-    case is_json_content_type?(headers) do
-      true -> {:ok, Jason.decode!(body)}
-      false -> {:ok, body}
+  defp maybe_decode(body) do
+    case Jason.decode(body) do
+      {:ok, parsed} -> {:ok, parsed}
+      _ -> {:ok, body}
     end
   end
-
-  defp is_json_content_type?(headers),
-    do:
-      headers
-      |> Map.new()
-      |> Map.get("Content-Type") == "application/json"
 end
