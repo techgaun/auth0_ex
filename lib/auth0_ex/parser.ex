@@ -42,5 +42,5 @@ defmodule Auth0Ex.Parser do
     do:
       headers
       |> Map.new()
-      |> Map.get("Content-Type") == "application/json"
+      |> Map.get("Content-Type") =~ "application/json"
 end
