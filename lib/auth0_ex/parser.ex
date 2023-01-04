@@ -38,9 +38,19 @@ defmodule Auth0Ex.Parser do
     end
   end
 
-  defp is_json_content_type?(headers),
-    do:
-      headers
-      |> Map.new()
-      |> Map.get("Content-Type") == "application/json"
+  defp is_json_content_type?(headers) do
+    get_media_type(headers) == "application/json"
+  end
+
+  defp get_media_type(headers) do
+    Enum.find_value(headers, "application/octet-stream", fn
+      {header, media_type} when header in ["Content-Type", "content-type"] ->
+        media_type
+        |> String.split(";")
+        |> hd()
+
+      _ ->
+        false
+    end)
+  end
 end
