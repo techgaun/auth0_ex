@@ -116,6 +116,15 @@ defmodule Auth0Ex.Management.User do
     do_get("#{@path}/#{user_id}/roles", params)
   end
 
+  @doc """
+    Deletes all users MFA authentication methods. Scopes: delete:authentication_methods
+
+      iex > Auth0Ex.Management.User.delete_authentication_methods("auth0|23423")
+  """
+  def delete_authentication_methods(user_id) do
+    do_delete("#{@path}/#{user_id}/authentication-methods")
+  end
+
   @doc false
   defp default_params do
     case Application.get_env(:auth0_ex, :v2_search) do
