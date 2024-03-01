@@ -27,7 +27,6 @@ defmodule Auth0Ex.Mixfile do
 
   def application do
     [
-      applications: [:logger, :httpoison, :jason],
       mod: {Auth0Ex.Application, []}
     ]
   end
