@@ -34,11 +34,11 @@ defmodule Auth0Ex.Mixfile do
 
   defp deps do
     [
-      {:httpoison, "~> 1.6"},
-      {:jason, "~> 1.1"},
+      {:httpoison, "~> 2.2"},
+      {:jason, "~> 1.4"},
       {:credo, "~> 1.6", only: [:dev, :test]},
-      {:exvcr, "~> 0.13", only: :test},
-      {:ex_doc, "~> 0.27", only: [:dev]}
+      {:exvcr, "~> 0.15", only: :test},
+      {:ex_doc, "~> 0.31", only: [:dev]}
     ]
   end
 
